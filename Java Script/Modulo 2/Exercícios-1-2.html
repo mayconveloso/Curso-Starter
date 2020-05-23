@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Início Java Script</title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+
+        <div id="principal">
+            <div>
+                <button  onclick="criarBox()">Criar Box</button>
+            </div>
+        </div>
+
+        <script> 
+        
+            // # Exercício 1 e 2
+
+            // função que cria as Box vermelhar na tela
+            function criarBox() {
+                
+                var boxElement = document.createElement('div');
+
+                boxElement.style.width = '100px';
+                boxElement.style.height = '100px';
+                boxElement.style.backgroundColor = '#f00';
+                boxElement.style.float = 'left';
+                boxElement.setAttribute('class', 'cor');
+                boxElement.setAttribute('onmouseover', 'identificarBox()'); // função para identificar qual box com o mouse em cima
+                
+                var divElement = document.querySelector('#principal');
+                divElement.appendChild(boxElement);
+                
+            }
+
+            function identificarBox(){
+                // pega todas as box com class 'cor'
+                var boxElement = document.querySelectorAll('.cor');
+                // percorre até achar a box com mouse hover ativo e troca a cor
+                for(i=0; i< boxElement.length; i++){
+                    boxElement[i].addEventListener("mouseover", function(){
+                        this.style.backgroundColor = mudarCor();
+                    })
+                }
+            }
+
+            //função que faz as cores serem random
+            function mudarCor() {
+                var letters = "0123456789ABCDEF";
+                var color = "#";
+                
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+        </script>   
+    </body>
+</html>
