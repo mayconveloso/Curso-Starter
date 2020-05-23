@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Início Java Script</title>
+
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+
+        <script>
+
+            var aluno = {
+                nome: 'Maycon',
+                idade: 19,
+                peso: 60,
+                humano: true
+
+            };
+
+            console.log(aluno);
+
+            var x = 10;
+            var y = 20;
+
+            console.log(x+y);
+
+            function soma(numero1, numero2){
+                let resultado = numero1 + numero2;
+
+                return resultado
+            }
+
+            resultado = soma(x,y);
+            console.log(resultado);
+            // console.log(soma(x,y));
+
+            function retornaSexo(sexo) {
+                // M, F
+                // Masculino, Feminino
+                if (sexo == 'M' || sexo == 'Masculino') {
+                    return 'Masculino';
+                } if (sexo == 'F' || sexo == 'Feminino') {
+                    return 'Feminino';
+                } else {
+                    return 'Seo inválido'
+                }
+            }
+            console.log(retornaSexo('M'));
+
+            var sexo = 'Masculino', idade = 19;
+
+            if (sexo == 'Masculino' && idade >= 19 ) {
+                console.log('OK');
+            }
+
+            // condição ternária quando tenho um if e else apenas
+
+            var retorno = (sexo == 'Masculino') ? 'M' : 'F';
+            console.log(retorno);
+
+            // repetição
+
+            /*
+            for(i = 0; i <= 100; i++){ // melhor quando sabemos quantas voltar será necessário
+                console.log(i);
+            }
+            */
+
+            var j = 0;
+
+            while (j <= 5){
+                console.log(j);
+                j++;
+            }
+
+            function exibirAlgo() {
+                console.log('Hello World')
+            }
+
+            //  setInterval(exibirAlgo,1000); // vai exibir repetidamente durante o tempo determinado em milessegundos
+            setTimeout(exibirAlgo,1000); // vai exibir somente uma quando chegar o tempo determinado em milessegundos 
+
+        </script>
+    </body>
+</html>

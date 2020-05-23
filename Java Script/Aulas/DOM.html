@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Início Java Script</title>
+
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+
+        <div id="principal">
+            <input type="text"onkeypress="alert('key pressionada')">
+            <button onclick="mostraAlerta()">Me pressione</button>
+
+            
+            <button class="botão">Botão</button>
+            <input type="text" name="nome" class="nome" id="nome">
+        </div>
+
+        <div id="secundaria">
+           
+            <button class="botao">Botão2</button>
+            <input type="text" name="nome" id="input">
+        </div>
+
+
+        <script>
+
+            
+            function mostraAlerta(){
+                
+                    alert('Botão foi clicado');
+                
+            }
+
+            //var inputElement = document.getElementById('nome');
+            //var inputElement = document.getElementsByTagName('input')[0]; retorna vetor(Array)
+            //var inputElement = document.getElementsByClassName('nome')[0];
+            //var inputElement = document.querySelector('body div#principal input#nome');
+            var inputElement = document.querySelector('input[name=nome]');
+            console.log(inputElement);
+
+            var inputElemente = document.querySelector('input#input');
+         
+
+            var btnElement = document.querySelector('button.botao');
+            btnElement.onclick = function(){
+                    var texto = inputElemente.value;
+                    alert(texto)
+                }
+
+            var linkElement = document.createElement('a');
+            
+
+        </script>
+    </body>
+</html>

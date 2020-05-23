@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Início Java Script</title>
+
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+
+        <div id="principal">
+            <input id="nome">
+            <div class="box"></div>
+        </div>
+
+        <script>
+
+            var linkElement = document.createElement('a');
+
+            linkElement.setAttribute('href', 'https://improvemente.tk');
+            linkElement.setAttribute('style', 'color: black;');
+
+            var textElement = document.createTextNode('Acessa site do improve');
+            linkElement.appendChild(textElement);
+
+            var divElemente = document.querySelector('#principal');
+            divElemente.appendChild(linkElement);
+
+            var linkElement = document.querySelector('#nome');
+            divElemente.removeChild(linkElement);
+
+            var boxElement = document.querySelector('.box')
+            
+            boxElement.style.width = '100px';
+            boxElement.style.height = '100px';
+            boxElement.style.backgroundColor = '#f00';
+            
+            
+        </script>
+    </body>
+</html>

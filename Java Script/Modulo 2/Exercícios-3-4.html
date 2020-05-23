@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Início Java Script</title>
+
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+
+        <div id="principal">
+
+        </div>
+        
+        <script> // # Exercícios 3 e 4
+
+            var nomes = ["Diego", "Gabriel", "Lucas"];
+
+            var divElement = document.querySelector('#principal');
+            var ulElement = document.createElement('ul');
+
+            // fazendo a varredura do array e colocando cada nome em uma li
+            for(i = 0; i< nomes.length; i++){
+
+                // criando uma li diferente a cada volta
+                var liElement = document.createElement('li');
+
+                // fazendo o nome virar um texto pra colocar dentro da li
+                nome = document.createTextNode(nomes[i]);
+                liElement.appendChild(nome);
+                ulElement.appendChild(liElement);// colocando li na ul
+                divElement.appendChild(ulElement); // colocando ul na div
+            }
+
+            // criando input
+            var inputElement = document.createElement('input');
+            inputElement.setAttribute('type', 'text');
+            inputElement.setAttribute('name', 'nome');
+            inputElement.setAttribute('placeholder', 'Digite um nome');
+            divElement.appendChild(inputElement);
+
+            // criando button
+            var buttonElement = document.createElement('button');
+            buttonElement.setAttribute('onclick', 'adicionar()');
+            var texto = document.createTextNode('Adicionar');
+            buttonElement.appendChild(texto);
+            divElement.appendChild(buttonElement);
+
+            // função para adicionar um novo nome na ul
+            function adicionar() {
+
+                // ler o conteudo que tem no input
+                var inputElement = document.querySelector('input[name=nome]');
+                // criar uma nova li
+                var liElement = document.createElement('li');
+                // ler a ul existente
+                var ulElement = document.querySelector('ul');
+                // tarnsformar oque esta dentro do input em texto para colocar dentro da nova li
+                var texto = document.createTextNode(inputElement.value);
+                
+                // colocando o nome do input na nova li
+                liElement.appendChild(texto);
+                // colocando a nova li na ul 
+                ulElement.appendChild(liElement);
+
+                // limpando valor do input para inserir um novo nome;
+                inputElement.value = '';
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS assíncrono</title>
+
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <div>
+            <ul></ul>
+            <input type="text" id="user" />
+            <button onclick="getUserRepo()">Adicionar</button>
+        </div>
+        
+
+        <script src="http://unpkg.com/axios/dist/axios.min.js"></script> <!--Para poder usar o axios-->
+
+        <script> 
+            
+            // # Exercício 1 Begin
+
+            // pegando a idade do usuario
+            var age = parseInt(prompt('Digite sua idade: '), 10);
+
+            function verificar(age){
+                return new Promise(function(resolve, reject) {
+                    setTimeout(function() { // depois de 2 segundos aparece a resposta
+                        if(age >= 18){
+                            resolve()
+                        } else {
+                            reject()
+                        }
+                    }, 2000)
+                })
+            }
+
+            verificar(age)
+                .then(function() {
+                    console.log('Maior de 18 anos')
+                })
+                .catch(function() {
+                    console.log('Menor de 18 anos')
+                })
+
+                // # Exercício 1 End
+//-------------------------------------------------------------------------------------------------------------//
+                // # Exercicio 2 3 4 Begin
+                
+            var inputName = document.getElementById("user"); // pegando o usuario que foi passado
+            var ulElement = document.querySelector("ul"); // pegando a ul para armazenar os repositórios
+            const getUserRepo = name => {
+            var user = inputName.value;
+            if (!user) { // verifica se usuario é valido
+                renderLoading(); // carregando
+                renderError(); // mensagem de erro
+                return; // para não passar dessa linha caso não tenha preenchido o usuario corretamente
+            }
+
+            renderLoading(); // Carregando no html 
+            axios.get(`https://api.github.com/users/${user}/repos`)
+                .then(response => {
+                    listRepo(response.data); // 200 OK - retorna para a função que vai criar a lista de repositórios
+                })
+                .catch(error => {
+                    renderError(); //  retorna mensagem de erro
+                });
+            };
+
+            function renderLoading() {
+                ulElement.innerHTML = ""; 
+                var textElement = document.createTextNode("Carregando...");
+                var loadingElement = document.createElement("li");
+                loadingElement.appendChild(textElement);
+                ulElement.appendChild(loadingElement);
+            }
+
+            function renderError() {
+                ulElement.innerHTML = "";
+                var user = inputName.value;
+                var msg = !user ? "Preencha o usuário" : "Erro ao efetuar busca"; // mensagens de erro
+
+                var textElement = document.createTextNode(msg);
+                var errorElement = document.createElement("li");
+                errorElement.style.color = "#F00";
+                errorElement.appendChild(textElement);
+                ulElement.appendChild(errorElement);
+            }
+
+            const listRepo = repositorios => {
+                console.log("Repositorios", repositorios);
+                ulElement.innerHTML = "";
+
+                for (repo of repositorios) {
+                    const repoItem = document.createElement("li");
+                    const repoName = document.createTextNode(repo.name);
+                    
+                    repoItem.appendChild(repoName);
+                    ulElement.appendChild(repoItem); // colocando cada repositório na ul
+                }
+            };
+
+            // # Exercicio 2 3 4 End
+
+        </script>
+    </body>
+</html>
